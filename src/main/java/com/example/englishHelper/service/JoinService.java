@@ -22,10 +22,16 @@ public class JoinService {
         User user = new User();
         user.setUsername(userDto.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        user.setEmail(userDto.getEmail());
         user.setRole("ROLE_USER");
 
         User newUser = userRepository.save(user);
 
         return UserDto.toDto(newUser);
+    }
+
+    public boolean alreadyExistUsername(String username) {
+
+        return userRepository.existsByUsername(username);
     }
 }

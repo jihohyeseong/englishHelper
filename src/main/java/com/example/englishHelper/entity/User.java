@@ -24,5 +24,8 @@ public class User {
     private String password;
 
     @Column
+    private String email;
+
+    @Column
     private String role;
 }
